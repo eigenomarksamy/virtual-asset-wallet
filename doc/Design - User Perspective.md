@@ -79,3 +79,7 @@
 - **Friends and feed**: Showing activity like rise in portfolio value, dips, etc.
 - **Gamification**: Achievements, daily log-in rewards, etc.
 - **Execution of Transactions**: Secure execution for transactions through integration with broker APIs.
+- **Algorithmic Trader**: Introduction of algorithmic/quant trading feature, based on multiple strategies.
+- **Seamless Secure Integration**: Integrate with bank and broker APIs, to update transaction history without user input.
+- **User data analytics**: Analyze user data based on their transaction history.
+- **AI financial advisor**: Integrate/Provide an AI SaaS as a financial advisor.
