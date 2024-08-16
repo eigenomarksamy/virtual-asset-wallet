@@ -1,4 +1,4 @@
-# Design - User Perspective
+# User Perspective
 
 ## 1. High-Level Overview
 
@@ -71,7 +71,7 @@
 ## 4. Next Steps
 
 - **Wireframing**: If you don't have wireframes yet, creating basic wireframes for each page can help visualize the design.
-- **Set Up Repository**: Set up a version control system (GitHub, GitLab) for collabrative development.
+- **Set Up Repository**: Set up a version control system (GitHub, GitLab) for collaborative development.
 - **Backend Coordination**: Ensure that the backend microservices are set up and accessible via RESTful, GraphQL, etc. APIs.
 
 ## 5. Future Ideas

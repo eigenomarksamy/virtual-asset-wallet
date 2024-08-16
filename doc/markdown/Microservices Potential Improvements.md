@@ -1,4 +1,4 @@
-# Design - Microservices Potential Improvements
+# Microservices Potential Improvements
 
 ## Current Microservice Overview
 

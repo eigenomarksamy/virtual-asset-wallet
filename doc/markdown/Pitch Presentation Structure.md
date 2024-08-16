@@ -51,7 +51,19 @@
       - Explain how the product will generate revenue (e.g., subscription model, freemium model, commission on transactions).
     - **Partnerships**:
       - Mention any potential partnerships or integrations that could enhance the product’s value.
-9.  **Q&A and Conclusion** (Slide 13)
+9. **Team Outline** (Slide 13)
+    - **Core Members**:
+      - Description for each role and type required to develop such project.
+        - Project manager
+        - Front-end engineer
+        - Back-end engineer
+        - Software engineer
+        - Systems, network and security engineer
+        - DevOps engineer
+        - QA engineer
+    - **Outsources**:
+      - Consultancy based activities (e.g., legal, graphic design, etc.)
+10. **Q&A and Conclusion** (Slide 14)
     - **Recap**:
       - Summarize the key points covered: the problem, solution, market potential, and technical approach.
     - **Call to Action**:

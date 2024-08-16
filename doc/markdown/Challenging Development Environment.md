@@ -1,4 +1,4 @@
-# Design - Challenging Development Environment
+# Challenging Development Environment
 
 Using different programming languages, SDKs, frameworks, and libraries across different microservices is a common practice and one of the key advantages of a microservices architecture. However, there are both benefits and challenges to this approach. Let’s break them down:
 
