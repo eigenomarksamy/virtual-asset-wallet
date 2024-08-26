@@ -1,0 +1,47 @@
+// src/app/components/TransactionTable.js
+"use client";
+
+import React from 'react';
+
+const TransactionTable = ({ transactions }) => {
+  return (
+    <table style={styles.table}>
+      <thead>
+        <tr>
+          <th style={styles.th}>Type</th>
+          <th style={styles.th}>Amount</th>
+          <th style={styles.th}>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        {transactions.map((transaction, index) => (
+          <tr key={index}>
+            <td style={styles.td}>{transaction.type}</td>
+            <td style={styles.td}>{transaction.amount}</td>
+            <td style={styles.td}>{transaction.description}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+};
+
+const styles = {
+  table: {
+    width: '100%',
+    borderCollapse: 'collapse',
+    marginTop: '1rem',
+  },
+  th: {
+    border: '1px solid #ddd',
+    padding: '8px',
+    backgroundColor: '#f2f2f2',
+    textAlign: 'left',
+  },
+  td: {
+    border: '1px solid #ddd',
+    padding: '8px',
+  },
+};
+
+export default TransactionTable;
