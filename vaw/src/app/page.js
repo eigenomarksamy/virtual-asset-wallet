@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import Dashboard from './components/Dashboard';
 import TransactionForm from './components/TransactionForm';
 import TransactionTable from './components/TransactionTable';
+import Navbar from './components/Navbar';
 
 export default function Home() {
   const [transactions, setTransactions] = useState([]);
@@ -20,6 +21,8 @@ export default function Home() {
 
   return (
     <div>
+      <break></break>
+      <Navbar />
       <Dashboard />
       <button onClick={toggleFormVisibility} style={styles.addButton}>
         {isFormVisible ? 'Cancel' : 'Add Transaction'}

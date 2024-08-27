@@ -11,6 +11,7 @@ const TransactionTable = ({ transactions }) => {
           <th style={styles.th}>Type</th>
           <th style={styles.th}>Amount</th>
           <th style={styles.th}>Description</th>
+          <th style={styles.th}>Platform</th>
         </tr>
       </thead>
       <tbody>
@@ -19,6 +20,7 @@ const TransactionTable = ({ transactions }) => {
             <td style={styles.td}>{transaction.type}</td>
             <td style={styles.td}>{transaction.amount}</td>
             <td style={styles.td}>{transaction.description}</td>
+            <td style={styles.td}>{transaction.platform}</td>
           </tr>
         ))}
       </tbody>

@@ -7,14 +7,16 @@ const TransactionForm = ({ addTransaction, toggleFormVisibility }) => {
   const [type, setType] = useState('');
   const [amount, setAmount] = useState('');
   const [description, setDescription] = useState('');
+  const [platform, setPlatform] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (type && amount && description) {
-      addTransaction({ type, amount: parseFloat(amount), description });
+      addTransaction({ type, amount: parseFloat(amount), description, platform });
       setType('');
       setAmount('');
       setDescription('');
+      setPlatform('');
       toggleFormVisibility();  // Hide form after submission
     }
   };
@@ -30,6 +32,7 @@ const TransactionForm = ({ addTransaction, toggleFormVisibility }) => {
         <option value="">Select Type</option>
         <option value="Buy">Buy</option>
         <option value="Sell">Sell</option>
+        <option value="Transfer">Transfer</option>
       </select>
       <input 
         type="number" 
@@ -44,6 +47,14 @@ const TransactionForm = ({ addTransaction, toggleFormVisibility }) => {
         value={description} 
         onChange={(e) => setDescription(e.target.value)} 
         placeholder="Description" 
+        style={styles.input}
+        required
+      />
+      <input 
+        type="text" 
+        value={platform} 
+        onChange={(e) => setPlatform(e.target.value)} 
+        placeholder="Platform" 
         style={styles.input}
         required
       />
