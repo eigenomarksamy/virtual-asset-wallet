@@ -5,9 +5,8 @@ const Navbar = () => {
     <nav style={styles.navbar}>
       <div style={styles.logo}>My Virtual Asset Wallet</div>
       <ul style={styles.navLinks}>
-        <li style={styles.navItem}><a href="#" style={styles.navLink}>Home</a></li>
-        <li style={styles.navItem}><a href="#" style={styles.navLink}>Transactions</a></li>
-        <li style={styles.navItem}><a href="#" style={styles.navLink}>Analytics</a></li>
+        <li style={styles.navItem}><a href="/" style={styles.navLink}>Home</a></li>
+        <li style={styles.navItem}><a href="/portfolios" style={styles.navLink}>Portfolios</a></li>
         <li style={styles.navItem}><a href="#" style={styles.navLink}>Settings</a></li>
       </ul>
     </nav>
