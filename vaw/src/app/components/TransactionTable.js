@@ -9,6 +9,12 @@ const TransactionTable = ({ transactions }) => {
       <thead>
         <tr>
           <th style={styles.th}>Type</th>
+          <th style={styles.th}>Kind</th>
+          <th style={styles.th}>Symbol</th>
+          <th style={styles.th}>Exchange</th>
+          <th style={styles.th}>Currency</th>
+          <th style={styles.th}>Price</th>
+          <th style={styles.th}>Fees</th>
           <th style={styles.th}>Amount</th>
           <th style={styles.th}>Description</th>
           <th style={styles.th}>Platform</th>
@@ -18,6 +24,12 @@ const TransactionTable = ({ transactions }) => {
         {transactions.map((transaction, index) => (
           <tr key={index}>
             <td style={styles.td}>{transaction.type}</td>
+            <td style={styles.td}>{transaction.kind}</td>
+            <td style={styles.td}>{transaction.symbol}</td>
+            <td style={styles.td}>{transaction.exchange}</td>
+            <td style={styles.td}>{transaction.currency}</td>
+            <td style={styles.td}>{transaction.price}</td>
+            <td style={styles.td}>{transaction.fees}</td>
             <td style={styles.td}>{transaction.amount}</td>
             <td style={styles.td}>{transaction.description}</td>
             <td style={styles.td}>{transaction.platform}</td>
