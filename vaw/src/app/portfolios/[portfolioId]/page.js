@@ -1,51 +1,65 @@
-// src/app/portfolios/[portfolioId]/page.js
 "use client";
 
-import React, { useState, useEffect } from "react";
-import TransactionForm from "../../components/TransactionForm";
-import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import TransactionForm from '../../components/TransactionForm';
 
-const PortfolioDetailPage = ({ params }) => {
-  const router = useRouter();
-  const { portfolioId } = params;
+const PortfolioPage = () => {
   const [portfolio, setPortfolio] = useState(null);
   const [transactions, setTransactions] = useState([]);
+  const router = useRouter();
+  const { portfolioId } = router.query;
 
+  // Fetch the portfolio and transactions when the page loads
   useEffect(() => {
-    const storedPortfolios = JSON.parse(localStorage.getItem("portfolios")) || [];
-    const foundPortfolio = storedPortfolios.find((p) => p.id === parseInt(portfolioId));
-    
-    if (foundPortfolio) {
-      setPortfolio(foundPortfolio);
-      // Retrieve transactions for this portfolio
-      const storedTransactions = JSON.parse(localStorage.getItem(`transactions_${portfolioId}`)) || [];
-      setTransactions(storedTransactions);
-    } else {
-      console.error(`Portfolio not found for ID: ${portfolioId}`);
-      router.push("/portfolios");  // Redirect if portfolio not found
-    }
-  }, [portfolioId, router]);
+    const fetchPortfolio = async () => {
+      if (!portfolioId) return;
 
-  const addTransaction = (transaction) => {
-    const newTransactions = [...transactions, transaction];
-    setTransactions(newTransactions);
-    localStorage.setItem(`transactions_${portfolioId}`, JSON.stringify(newTransactions));
+      const res = await fetch(`/api/portfolios/${portfolioId}`);
+      if (res.ok) {
+        const data = await res.json();
+        setPortfolio(data.portfolio);
+        setTransactions(data.transactions);
+      } else {
+        console.error('Portfolio not found');
+      }
+    };
+
+    fetchPortfolio();
+  }, [portfolioId]);
+
+  // Add transaction to the portfolio
+  const addTransaction = async (transaction) => {
+    const res = await fetch(`/api/portfolios/${portfolioId}/transactions`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(transaction),
+    });
+
+    if (res.ok) {
+      const newTransaction = await res.json();
+      setTransactions([...transactions, newTransaction]);
+    } else {
+      console.error("Failed to add transaction");
+    }
   };
 
   if (!portfolio) return <p>Loading...</p>;
 
   return (
     <div>
-      <h2>{portfolio.name} - {portfolio.isActual ? "Actual" : "Simulated"}</h2>
+      <h1>{portfolio.name} {portfolio.isActual ? '(Actual)' : ''}</h1>
+
       <TransactionForm addTransaction={addTransaction} />
-      <h3>Transactions</h3>
+
+      <h2>Transactions</h2>
       <ul>
-        {transactions.map((transaction, index) => (
-          <li key={index}>{transaction.type}: {transaction.amount} at ${transaction.price}</li>
+        {transactions.map(tx => (
+          <li key={tx.id}>{tx.description} - {tx.amount} @ {tx.price}</li>
         ))}
       </ul>
     </div>
   );
 };
 
-export default PortfolioDetailPage;
+export default PortfolioPage;

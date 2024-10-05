@@ -1,4 +1,3 @@
-// src/app/components/TransactionTable.js
 "use client";
 
 import React from 'react';
