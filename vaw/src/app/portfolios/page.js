@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import PortfolioForm from "../components/PortfolioForm";
+import PortfolioForm from "../components/portfolios/PortfolioForm";
 import Link from "next/link";
 
 const PortfoliosPage = () => {
