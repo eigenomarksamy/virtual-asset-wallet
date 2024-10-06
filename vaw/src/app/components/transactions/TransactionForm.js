@@ -1,8 +1,7 @@
 "use client";
-
 import React, { useState } from "react";
 
-const TransactionForm = ({ addTransaction }) => {
+const TransactionForm = ({ onAddTransaction }) => {
   const [type, setType] = useState('');
   const [kind, setKind] = useState('');
   const [symbol, setSymbol] = useState('');
@@ -16,28 +15,23 @@ const TransactionForm = ({ addTransaction }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (type && price && amount && description) {
-      addTransaction({ type, kind, symbol, exchange, currency, price: parseFloat(price),
-        fees: parseFloat(fees), amount: parseFloat(amount), description, platform });
-
-      // Reset fields after submission
-      setType('');
-      setKind('');
-      setSymbol('');
-      setExchange('');
-      setCurrency('');
-      setPrice('');
-      setFees('');
-      setAmount('');
-      setDescription('');
-      setPlatform('');
-    }
+    onAddTransaction({
+      type,
+      kind,
+      symbol,
+      exchange,
+      currency,
+      price: parseFloat(price),
+      fees: parseFloat(fees),
+      amount: parseFloat(amount),
+      description,
+      platform,
+    });
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      {/* Form inputs remain the same */}
-      {/* Add your inputs here */}
+      {/* Your input fields here */}
       <button type="submit">Add Transaction</button>
     </form>
   );

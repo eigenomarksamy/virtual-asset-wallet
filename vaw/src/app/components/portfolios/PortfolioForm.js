@@ -1,50 +1,36 @@
-// src/app/components/PortfolioForm.js
 "use client";
-
 import React, { useState } from 'react';
 
-const PortfolioForm = ({ addPortfolio }) => {
+const PortfolioForm = ({ onAddPortfolio }) => {
   const [name, setName] = useState('');
-  const [isActual, setIsActual] = useState(false);
+  const [isReal, setIsReal] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    // API request to backend to create portfolio
-    const res = await fetch('/api/portfolios', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, isActual }),
-    });
-
-    if (res.ok) {
-      const newPortfolio = await res.json();
-      addPortfolio(newPortfolio);  // Add portfolio to the state in parent component
-      setName('');  // Clear the form
-      setIsActual(false);
-    } else {
-      console.error("Failed to create portfolio");
-    }
+    const portfolioData = { name, isReal };
+    onAddPortfolio(portfolioData);
+    setName(''); // Clear form after submission
+    setIsReal(false);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <input 
-        type="text" 
-        value={name} 
-        onChange={(e) => setName(e.target.value)} 
-        placeholder="Portfolio Name" 
-        required 
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="Portfolio Name"
+        required
       />
       <label>
-        <input 
-          type="checkbox" 
-          checked={isActual} 
-          onChange={(e) => setIsActual(e.target.checked)} 
+        <input
+          type="checkbox"
+          checked={isReal}
+          onChange={(e) => setIsReal(e.target.checked)}
         />
-        Actual Portfolio
+        Real Portfolio
       </label>
-      <button type="submit">Create Portfolio</button>
+      <button type="submit">Add Portfolio</button>
     </form>
   );
 };
